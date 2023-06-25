@@ -69,7 +69,7 @@ const HomeMainbar = () => {
    
 
   const redirect = ()=>{
-    alert("login or signup to ask a question");
+    
     navigate('/Auth');
   }
 
