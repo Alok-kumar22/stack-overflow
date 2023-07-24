@@ -6,6 +6,18 @@ const userSchema = mongoose.Schema({
   password: { type: String, required: true },
   about: { type: String },
   tags: { type: [String] },
+  followers: [
+    {
+      friendId: String,
+      friendName: String,
+    },
+  ],
+  following: [
+    {
+      followingId: String,
+      followingName: String,
+    },
+  ],
   joinedOn: { type: Date, default: Date.now },
 });
 

@@ -22,10 +22,15 @@ const AskQuestion = () => {
   const handleSubmit = (e)=>{
     e.preventDefault();
   //console.log({questionTitle,questionBody,questionTags});
-
-   dispatch(askQuestion({questionTitle,questionBody,questionTags,userPosted:user.result.name,userId:user?.result?._id}))
+  if(!questionTitle || !questionBody || !questionTags){
+    alert('all paremeters are required!');
+  }
+  else {
+    
+    dispatch(askQuestion({questionTitle,questionBody,questionTags,userPosted:user.result.name,userId:user?.result?._id}))
    dispatch(fetchAllQuestion());
    navigate('/');
+  }
   }
   return (
    <div>

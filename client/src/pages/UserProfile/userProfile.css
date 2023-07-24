@@ -88,3 +88,23 @@
     background-color: transparent;
     border:none;
 }
+.auth-btn1{
+    border:solid 1px rgb(129, 122, 122);
+    border-radius: 20px;
+    background-color: #89c2ed;
+    color:white;
+    width: 60px;
+   font-size: 15px;
+}
+.auth-btn1:hover{
+    background-color: #0091ff;
+}
+
+.auth-btn2{
+    border:solid 1px rgb(129, 122, 122);
+    border-radius: 20px;
+    background-color: #494a4b;
+    color:white;
+   
+   font-size: 15px;
+}

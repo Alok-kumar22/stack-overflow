@@ -13,12 +13,20 @@ import { useDispatch } from "react-redux";
 import Tags from "./pages/Tags/Tags";
 import Users from "./pages/Users/Users";
 import { fetchAllUsers } from "./actions/user";
+import Subscritpion from "./pages/Subscription/Subscritpion";
 import UserProfile from "./pages/UserProfile/UserProfile";
+import ComunityDashboard from "./pages/communityPage/Communitydashboard";
+import CommunityPost from "./pages/communityPage/CommunityPost";
+import { getPosts } from "./actions/posts";
+import Friends from "./pages/communityPage/Friends";
+import { getvedio } from "./actions/vedios";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAllQuestion());
     dispatch(fetchAllUsers());
+    dispatch(getPosts());
+    dispatch(getvedio());
   }, [dispatch]);
 
   return (
@@ -30,7 +38,10 @@ function App() {
         <Route path="/Questions" element={<Questions />} />
         <Route path="/AskQuestion" element={<AskQuestion />} />
         <Route path="/Questions/:id" element={<DisplayQuestion />} />
-
+        <Route path="/Subscription/:id" element={<Subscritpion />} />
+        <Route path="/community/dashboard" element={<ComunityDashboard />} />
+        <Route path="/create-post" element={<CommunityPost />} />
+        <Route path="/friendlist" element={<Friends />} />
         <Route path="/Tags" element={<Tags />} />
         <Route path="/Users" element={<Users />} />
         <Route path="/Users/:id" element={<UserProfile />} />

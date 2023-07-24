@@ -15,7 +15,6 @@ export const askQuestion = (questionData) => async (dispatch) => {
 
 export const fetchAllQuestion = () => async (dispatch) => {
   try {
-    console.log("fetch data");
     const { data } = await api.getAllQuestions();
     dispatch({ type: "FETCH_ALL_QUESTIONS", payload: data });
   } catch (error) {

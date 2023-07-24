@@ -57,3 +57,44 @@ export const login = async (req, res) => {
     });
   }
 };
+
+export const followings = async (req, res) => {
+  const { id: _id } = req.params;
+  const { userId, userName } = req.body;
+
+  try {
+    const userupdate = await users.findByIdAndUpdate(_id, {
+      $addToSet: {
+        following: [{ followingId: userId, followingName: userName }],
+      },
+    });
+    const followeruser = await users.findByIdAndUpdate(userId, {
+      $addToSet: {
+        followers: [{ friendId: _id, friendName: userupdate.name }],
+      },
+    });
+    res.status(200).json({ result: userupdate });
+  } catch (error) {
+    console.log(error);
+    res.status(404).send(error);
+  }
+};
+
+export const deletefollowings = async (req, res) => {
+  const { id: _id } = req.params;
+  const { userId } = req.body;
+  try {
+    await users.updateOne(
+      { _id },
+      { $pull: { following: { followingId: userId } } }
+    );
+    await users.updateOne(
+      { _id: userId },
+      { $pull: { followers: { friendId: _id } } }
+    );
+    res.status(200).json({ message: "Successfully deletd...." });
+  } catch (error) {
+    console.log(error);
+    res.status(404).send({ success: "false", error });
+  }
+};

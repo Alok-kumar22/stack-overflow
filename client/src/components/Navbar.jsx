@@ -43,6 +43,8 @@ const handleLogOut = ()=>{
 
         <Avatar backgroundColor='#009dff' px="10px" py="7px" borderRadius="50%" color='white'><Link to={`/Users/${user.result._id}`} className='' style={{color:"white",textDecoration:"none"
         }}> {user.result.name.charAt(0)} </Link> </Avatar>
+        
+        <Link to={`/Subscription/${user.result._id}`} className='sub-btn-link'>Subscription</Link>
          <button className='nav-item nav-links' onClick={handleLogOut}>Log Out</button>
         </>}
       </div>

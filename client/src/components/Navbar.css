@@ -76,6 +76,16 @@
     cursor: pointer;
 }
 
+.sub-btn-link{
+    padding:7px 13px;
+    margin-left:1px;
+    margin-right:2px;
+    border-radius: 6px;
+    border:solid 1px red;
+    color:red;
+    text-decoration: none;
+}
+
 .nav-links:hover{
     background-color: #d3e4eb;
 }

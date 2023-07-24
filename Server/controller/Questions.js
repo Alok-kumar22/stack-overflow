@@ -4,8 +4,12 @@ import mongoose from "mongoose";
 export const AskQuestion = async (req, res) => {
   try {
     const postQuestionData = req.body;
+    var date = new Date();
 
-    const postQuestion = new QuestionModel(postQuestionData).save();
+    date.setHours(1, 1, 1, 1);
+
+    postQuestionData.Ondate = date;
+    const postQuestion = await new QuestionModel(postQuestionData).save();
 
     res.status(200).json("Posted a Question Successfully");
   } catch (error) {
@@ -84,5 +88,26 @@ export const voteQuestion = async (req, res) => {
     res.status(200).json({ message: "Successfully voted...." });
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const checkQuestionsonDay = async (req, res) => {
+  var date = new Date();
+  date.setHours(1, 1, 1, 1);
+  const { id: _id } = req.params;
+
+  try {
+    const questionList = await QuestionModel.find({
+      $and: [
+        {
+          userId: _id,
+        },
+        { Ondate: date },
+      ],
+    });
+    res.status(200).json(questionList);
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({ success: "false", message: error.message });
   }
 };

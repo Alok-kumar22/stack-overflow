@@ -30,7 +30,42 @@ export const voteQuestion = (id, value, userId) => {
   API.patch(`/questions/vote/${id}`, { value, userId });
 };
 
+export const likepost = (id, userId) => {
+  API.put(`/post/likepost/${id}`, userId);
+};
+export const likevedio = (id, userId) => {
+  API.put(`/post/likevedio/${id}`, userId);
+};
 export const fetchAllUsers = () => API.get("/user/getAllUsers");
 
 export const updateProfile = (id, updateData) =>
   API.patch(`/user/update/${id}`, updateData);
+
+export const getSubscriptionPlan = (subdata) => {
+  API.post("/user/getplan", subdata);
+};
+export const checksubsciption = (subdata) => {
+  API.delete("/user/deleteplan", subdata);
+};
+
+export const createpost = (postData) => {
+  API.post("/post/create-post", postData);
+};
+export const createvedio = (postData) => {
+  API.post("/post/create-vedio", postData);
+};
+export const getpost = () => API.get("/post/getpost");
+export const getvedio = () => API.get("/post/getvedio");
+export const getuserpost = (id) => API.get(`/post/userpost/${id}`);
+
+export const addfriends = (id, value) => {
+  API.put(`/user/following/${id}`, value);
+};
+export const deletefriends = (id, value) => {
+  console.log("hello");
+  API.put(`/user/removefollower/${id}`, value);
+};
+
+/*export const comments = (id, comment, userName) => {
+  API.put(`/${id}/comment`, { comment, userName });
+};*/
