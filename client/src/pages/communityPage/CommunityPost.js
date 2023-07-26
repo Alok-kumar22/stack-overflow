@@ -51,13 +51,6 @@ const CommunityPost = () => {
             Add Photo
           </button>{" "}
           &nbsp;
-          <button
-            onClick={() => {
-              setPost(false);
-            }}
-          >
-            Add Vedio
-          </button>{" "}
         </div>
         <section className="auth-section">
           {posttype ? (
